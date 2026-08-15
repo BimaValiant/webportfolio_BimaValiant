@@ -15,11 +15,11 @@ type Project = {
 const projects: Project[] = [
   {
     id: '01',
-    title: 'Hotel Booking App',
-    category: 'Android · Kotlin · Retrofit API',
+    title: 'OmniStock AI',
+    category: 'Fullstack · Laravel · Gemini AI Integration · MySQL',
     year: '2026',
-    image: '/work/project-01.png',
-    githubUrl: 'https://github.com/', // Ganti dengan link GitHub kamu
+    image: 'omnistock.png',
+    githubUrl: 'https://github.com/BimaValiant/OmniStock-AI.git', 
   },
   {
     id: '02',
