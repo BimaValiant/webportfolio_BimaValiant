@@ -3,49 +3,59 @@
 import { ArrowUpRight } from 'lucide-react'
 import { useRef, useState } from 'react'
 
-type Project = {
-  id: string
-  title: string
-  category: string
-  year: string
-  image: string
-  githubUrl?: string
+export interface Project {
+  id: string;
+  title: string;
+  category: string;
+  year: string;
+  image: string;
+  githubUrl?: string;
+  demoUrl?: string;
+  description?: string;
+  techStack?: string[];
 }
-
 const projects: Project[] = [
   {
     id: '01',
     title: 'OmniStock AI',
-    category: 'Fullstack · Laravel · Gemini AI Integration · MySQL',
+    category: 'Fullstack Enterprise Inventory & Analytics',
     year: '2026',
-    image: 'omnistock.png',
-    githubUrl: 'https://github.com/BimaValiant/OmniStock-AI.git', 
+    image: '/omnistock.png', // Tambahkan garis miring '/' di awal jika file ada di folder public/
+    githubUrl: 'https://github.com/BimaValiant/OmniStock-AI.git',
+    description: 'Sistem manajemen inventoris berbasis AI dengan kalkulasi Profit Margin presisi berdasarkan transaksi nyata, visualisasi tren omset mingguan dinamis via Chart.js, serta pengaturan organisasi interaktif.',
+    techStack: ['Laravel 11', 'Gemini AI API', 'MySQL', 'Tailwind CSS', 'Chart.js', 'AJAX']
   },
   {
     id: '02',
     title: 'Health Prediction System',
-    category: 'Machine Learning · Python · Flask · KNN Algorithm',
+    category: 'Machine Learning & Predictive Analytics',
     year: '2026',
-    image: '/work/project-02.png',
+    image: '/project-02.png',
     githubUrl: 'https://github.com/BimaValiant/health-prediction-knn.git',
+    description: 'Aplikasi analisis medis berbasis Machine Learning menggunakan algoritma K-Nearest Neighbors (KNN) untuk mengklasifikasi dan memprediksi risiko kesehatan secara akurat.',
+    techStack: ['Python', 'Flask', 'Scikit-Learn', 'KNN Algorithm', 'Pandas']
   },
   {
     id: '03',
     title: 'Skin Market',
-    category: 'Full-Stack Web · Laravel · PHP · Blade · MySQL',
+    category: 'E-Commerce & Digital Asset Marketplace',
     year: '2025',
-    image: '/work/project-03.png',
+    image: '/project-03.png',
     githubUrl: 'https://github.com/BimaValiant/skin-market.git',
+    description: 'Platform e-commerce tempat jual beli item digital dan in-game skin dengan sistem manajemen produk, keranjang belanja, dan pemrosesan transaksi yang terintegrasi.',
+    techStack: ['Laravel', 'PHP', 'Blade Templating', 'MySQL', 'Tailwind CSS']
   },
   {
-  id: '04',
-  title: 'Resto App Android',
-  category: 'Android Studio · Kotlin · Retrofit API · Glide · Material UI',
-  year: '2026',
-  image: '/work/resto-app.png',
-  githubUrl: 'https://github.com/BimaValiant/resto-app-android.git',
-},
-]
+    id: '04',
+    title: 'Resto App Android',
+    category: 'Mobile Application & Restaurant Management',
+    year: '2026',
+    image: '/resto-app.png',
+    githubUrl: 'https://github.com/BimaValiant/resto-app-android.git',
+    description: 'Aplikasi Android native untuk pemesanan menu restoran secara real-time, dilengkapi dengan integrasi RESTful API, penanganan antarmuka responsif, dan pemuatan gambar berkinerja tinggi.',
+    techStack: ['Android Studio', 'Kotlin', 'Retrofit API', 'Glide', 'Material Design']
+  },
+];
 
 export function Work() {
   const [active, setActive] = useState<number | null>(null)
@@ -101,7 +111,7 @@ export function Work() {
       <div
         ref={previewRef}
         aria-hidden
-        className="pointer-events-none fixed left-0 top-0 z-40 hidden h-64 w-80 overflow-hidden rounded-lg border border-foreground/10 shadow-2xl transition-opacity duration-300 md:block"
+        className="pointer-events-none fixed left-0 top-0 z-50 hidden h-[280px] w-[460px] overflow-hidden rounded-xl border border-foreground/15 bg-background shadow-2xl transition-opacity duration-300 md:block"
         style={{ opacity: active !== null ? 1 : 0 }}
       >
         {projects.map((project, i) => (
@@ -110,7 +120,7 @@ export function Work() {
             key={project.id}
             src={project.image || '/placeholder.svg'}
             alt={project.title}
-            className="absolute inset-0 h-full w-full object-cover transition-opacity duration-200"
+            className="absolute inset-0 h-full w-full object-cover object-top transition-opacity duration-200"
             style={{ opacity: active === i ? 1 : 0 }}
           />
         ))}
