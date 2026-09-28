@@ -1,65 +1,53 @@
-'use client'
+"use client";
 
-import { useEffect, useState } from 'react'
+import Link from "next/link";
+import { motion } from "framer-motion";
 
-const links = [
-  { label: 'Work', href: '#work' },
-  { label: 'About', href: '#about' },
-  { label: 'Playbook', href: '#skills' },
-  { label: 'Contact', href: '#contact' },
-]
-
-export function SiteNav() {
-  const [scrolled, setScrolled] = useState(false)
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24)
-    onScroll()
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
-
+export default function SiteNav() {
   return (
-    <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? 'border-b border-border bg-background/80 backdrop-blur-md'
-          : 'border-b border-transparent'
-      }`}
-    >
-      <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 md:px-8">
-        <a
-          href="#top"
-          className="font-display text-lg font-bold tracking-tight text-foreground"
-        >
-          Bima<span className="text-primary">.</span>Valiant
-        </a>
+    <header className="fixed top-0 inset-x-0 z-50 px-6 sm:px-12 py-6 flex justify-between items-start pointer-events-none">
+      {/* Top Left Logo (Stacked) */}
+      <motion.div 
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="pointer-events-auto"
+      >
+        <Link href="/" className="font-racing text-2xl sm:text-3xl leading-none tracking-tighter text-black block">
+          BIMA<br />VALIANT
+        </Link>
+      </motion.div>
 
-        <ul className="hidden items-center gap-1 md:flex">
-          {links.map((l) => (
-            <li key={l.href}>
-              <a
-                href={l.href}
-                className="group relative rounded-full px-4 py-2 text-sm font-medium text-foreground/70 transition-colors hover:text-foreground"
-              >
-                <span className="relative z-10">{l.label}</span>
-                <span className="absolute inset-0 scale-90 rounded-full bg-secondary opacity-0 transition-all duration-200 group-hover:scale-100 group-hover:opacity-100" />
-              </a>
-            </li>
-          ))}
-        </ul>
+      {/* Center Monogram Emblem */}
+      <motion.div 
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        className="hidden md:block pointer-events-auto"
+      >
+        <div className="font-racing text-2xl tracking-widest text-black border-2 border-black px-2 py-0.5 rounded">
+          BV
+        </div>
+      </motion.div>
 
+      {/* Top Right Buttons */}
+      <motion.div 
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="flex items-center gap-3 pointer-events-auto"
+      >
         <a
           href="#contact"
-          className="inline-flex items-center gap-2 rounded-full bg-foreground px-4 py-2 text-sm font-semibold text-background transition-transform duration-200 hover:-translate-y-0.5"
+          className="px-5 py-2.5 rounded-xl bg-[#d2ff00] text-black font-racing text-xs tracking-wider border border-black/20 hover:bg-black hover:text-white transition-all shadow-sm flex items-center gap-2"
         >
-          <span className="relative flex h-2 w-2">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75" />
-            <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
-          </span>
-          Available
+          <span>⚡</span> CONTACT
         </a>
-      </nav>
+        <button 
+          aria-label="Toggle navigation menu"
+          className="w-10 h-10 rounded-xl bg-white border border-black/10 flex flex-col justify-center items-center gap-1 hover:bg-black hover:text-white transition-colors"
+        >
+          <span className="w-5 h-0.5 bg-current"></span>
+          <span className="w-5 h-0.5 bg-current"></span>
+        </button>
+      </motion.div>
     </header>
-  )
+  );
 }

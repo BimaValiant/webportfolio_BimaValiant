@@ -1,41 +1,27 @@
-'use client'
+"use client";
 
-const items = [
-  'Laravel Framework',
-  'Android Studio (Kotlin)',
-  'RESTful APIs',
-  'Retrofit',
-  'MongoDB & MySQL',
-  'UI/UX Figma',
-  'Postman Integration',
-]
+export default function Marquee() {
+  const items = [
+    "NEXT.JS 15",
+    "TAILWIND CSS",
+    "LARAVEL",
+    "SUPABASE",
+    "SIM RACING",
+    "VALIANT EXOTICS",
+    "PYTHON FLASK",
+    "REACT",
+  ];
 
-export function Marquee() {
   return (
-    <section className="grain border-y border-foreground bg-foreground py-4 text-background select-none overflow-hidden">
-      <div className="marquee-container flex overflow-hidden cursor-pointer">
-        <div className="flex shrink-0 animate-marquee items-center gap-8 whitespace-nowrap pr-8">
-          {[...items, ...items].map((item, i) => (
-            <span key={i} className="flex items-center gap-8">
-              <span className="font-display text-2xl font-semibold md:text-4xl">{item}</span>
-              <span className="text-accent" aria-hidden>
-                ✦
-              </span>
-            </span>
-          ))}
-        </div>
-        <div
-          aria-hidden
-          className="flex shrink-0 animate-marquee items-center gap-8 whitespace-nowrap pr-8"
-        >
-          {[...items, ...items].map((item, i) => (
-            <span key={i} className="flex items-center gap-8">
-              <span className="font-display text-2xl font-semibold md:text-4xl">{item}</span>
-              <span className="text-accent">✦</span>
-            </span>
-          ))}
-        </div>
+    <div className="w-full bg-neon py-3 overflow-hidden transform -rotate-1 my-12 border-y border-black">
+      <div className="flex whitespace-nowrap animate-marquee gap-8 font-racing text-black text-xl tracking-wider">
+        {[...items, ...items, ...items].map((item, index) => (
+          <span key={index} className="flex items-center gap-8">
+            <span>{item}</span>
+            <span className="text-xs">⚡</span>
+          </span>
+        ))}
       </div>
-    </section>
-  )
+    </div>
+  );
 }
