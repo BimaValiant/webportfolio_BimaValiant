@@ -1,34 +1,49 @@
 @import "tailwindcss";
 
 :root {
-  --bg-light: #f6f6f4;
-  --text-dark: #0f0f11;
-  --neon-lime: #d2ff00;
+  --bg-cream: #f4f4f0;
+  --text-main: #0a0a0c;
+  --accent-lime: #d2ff00;
+  --border-subtle: rgba(10, 10, 12, 0.12);
 }
 
 body {
-  background-color: var(--bg-light);
-  color: var(--text-dark);
+  background-color: var(--bg-cream);
+  color: var(--text-main);
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* Garis Kontur Topografi ala Lando Norris */
-.bg-topography {
-  background-color: #f6f6f4;
-  background-image: radial-gradient(#e0e0dc 1px, transparent 1px), radial-gradient(#e0e0dc 1px, #f6f6f4 1px);
-  background-size: 40px 40px;
-  background-position: 0 0, 20px 20px;
+/* Pola Grid Topografi Khas Lando Norris */
+.bg-norris-grid {
+  background-size: 60px 60px;
+  background-image: 
+    linear-gradient(to right, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
 }
 
-/* Typography Editorial */
+/* Tipografi Condensed & Editorial */
+.font-racing {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-weight: 900;
+  letter-spacing: -0.06em;
+  text-transform: uppercase;
+}
+
 .font-editorial {
   font-family: 'Georgia', serif;
-  letter-spacing: -0.03em;
+  font-style: italic;
 }
 
-.font-racing {
-  font-weight: 900;
-  letter-spacing: -0.05em;
-  text-transform: uppercase;
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f4f4f0;
+}
+::-webkit-scrollbar-thumb {
+  background: #0a0a0c;
+  border-radius: 3px;
 }
